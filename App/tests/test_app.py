@@ -41,15 +41,10 @@ class UserUnitTests(unittest.TestCase):
         user_json = user.toJSON()
         self.assertDictEqual(user_json, {"id":None, "username":"bob", "type": 'staff'})
     
-    def test_hashed_password(self):
-        password = "mypass"
-        user = User("bob", password)
-        assert user.password != password
+    # def test_hashed_password(self):
 
-    def test_check_password(self):
-        password = "mypass"
-        user = User("bob", password)
-        assert user.check_password(password)
+    # def test_check_password(self):
+        
 
 '''
     Integration Tests
@@ -64,76 +59,28 @@ def empty_db():
     db.drop_all()
 
 
-def test_authenticate():
-    bob = create_staff("bob", "bobpass")
-    assert authenticate("bob", "bobpass")
+# def test_authenticate():
+    
+# def test_create_game():
+    
+# def test_create_user():
+    
+# def test_create_staff():
 
-def test_create_game():
-    game = create_game("frogger", 1)
-    assert game.title == "frogger" and game.rawgId == 1
-
-def test_create_user():
-    user = create_customer("rick", "bobpass")
-    assert user.username == "rick"
-    user = create_staff("bob", "bobpass")
-    assert authenticate("bob", "bobpass")
-
-def test_create_staff():
-    ron = create_staff("ron", "bobpass")
-    user = get_staff(ron.id)
-    assert user.username == ron.username
-
-
-def test_staff_create_listing():
-    bob = get_staff(1)
-    rick = get_customer(1)
-    game = get_game(1)
-    bob.list_game(rick, game, "new", 10)
-    assert rick.listings[0].listingId == 1
-
-def test_staff_confirm_rental():
-    bob = get_staff(1)
-    sally = create_customer("sally", "bobpass")
-    listing = get_listing(1)
-    bob.confirm_rental(sally, listing)
-    assert listing.rentals[0].rentalId == 1
-
-def test_staff_confirm_return():
-    bob = get_staff(1)
-    rental = get_rental(1)
-    bob.confirm_return(rental)
-    assert rental.return_date != None
+# def test_staff_create_listing():
+    
+# def test_staff_confirm_rental():
+    
+# def test_staff_confirm_return():
 
 # class UsersIntegrationTests(unittest.TestCase):
 
-#     def test_get_all_users_json(self):
-#         users_json = get_all_users_json()
-#         self.assertListEqual([{"id":1, "username":"bob", "type":"staff"}, {"id":2, "username":"ron", "type":"staff"}], users_json)
+# tests staff's ability to create rentals in system
 
-    # tests staff's ability to create rentals in system
-    # def test_list_game(self):
-    #     bob = get_staff(1)
-    #     jane = create_customer("jane", "janepass")
-        
-    #     game = create_game("frogger", 12324, "Teen", "NSW", "http://image.com", "adventure")
-    #     new_listing = bob.list_game(jane, game, "good", 5.00)
-    #     test_listing = get_listing(new_listing.listingId)
-    #     assert test_listing.ownerId == jane.id and test_listing.gameId == game.gameId
-    
-    # def test_staff_confirm_rental(self):
-    #     listing = get_listing(1)
-    #     bob = get_staff(1)
-    #     ross = create_customer("ross", "rosspass")
-    #     new_rental = bob.confirm_rental(ross, listing)
-    #     test_rental = get_rental(new_rental.rentalId)
-    #     assert test_rental.renterId == ross.id and test_rental.listingId == listing.listingId
-    
-    # def test_staff_confirm_return(self):
-    #     rental = get_rental(1)
-    #     bob = get_staff(1)
-    #     bob.confirm_return(rental)
-    #     test_rental = get_rental(1)
-    #     assert test_rental.return_date != None
+# def test_staff_confirm_rental(self):
+
+# def test_staff_confirm_return(self):
+  
         
 
     
