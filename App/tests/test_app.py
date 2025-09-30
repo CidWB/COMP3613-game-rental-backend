@@ -6,6 +6,7 @@ from App.database import create_db, db
 from App.models import User, Staff
 from App.controllers import (
     create_customer,
+    create_user,
     create_game,
     get_customer,
     create_staff,
@@ -16,8 +17,6 @@ from App.controllers import (
     get_rental,
     get_staff,
     create_game,
-    get_all_users_json,
-    authenticate,
     get_listing,
     update_staff
 )
@@ -63,7 +62,13 @@ def empty_db():
     
 # def test_create_game():
     
-# def test_create_user():
+def test_create_user():
+    user = create_user("bob", "bobpass")
+    userID = get_user(user.id)
+    if userID not None:
+        print(f"User created: {User.toJSON()}")
+    else:
+        print("test_create_user() failed")
     
 # def test_create_staff():
 
